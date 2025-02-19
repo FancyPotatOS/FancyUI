@@ -22,7 +22,7 @@ data merge storage fancyui:data {slot:\
                 fancyui: {\
                     origin:[14,79,-6],\
                     Slot:19,\
-                    background:true\
+                    fixed:true\
                 }\
             }\
         }\

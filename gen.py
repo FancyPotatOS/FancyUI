@@ -85,16 +85,14 @@ def fit_image(img: Image.Image):
     return img
 
 
-os.chdir("data/fancyui/function/ui/init/slot/specific")
-
-raw = """execute if data entity @s data.slots[{Slot:_INT_b}] run function fancyui:ui/init/slot/specific/_INT_"""
+os.chdir("data/fancyui/function/ui/safety/fixed/saving/slot")
 
 replacements = {}
 for i in range(54):
     replacements["_INT_"] = str(i)
 
     replace_file("_INT_.mcfunction", replacements)
-    print(replace_values(raw, replacements))
+
 
 
 

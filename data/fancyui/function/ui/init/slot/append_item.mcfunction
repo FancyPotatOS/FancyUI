@@ -1,5 +1,5 @@
 #
-#   Append Background
+#   Append Item
 #   
 #   Purpose: To append to this container's Items using the slot from storage 'fancyui:data slot.Slot'
 #
