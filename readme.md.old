@@ -1,0 +1,116 @@
+
+
+# Minecraft FancyUI Datapack
+
+<em>Created by FancyPotatOS</em>
+
+
+
+## About this datapack
+
+This datapack is a framework for user interface within container blocks. It enables datapack creators to easily create custom UI elements with safe detection of item placement within specific slots, along with some other quality-of-life features.
+
+#### Features:
+- Item preservation + safety
+    - Backend items are tamper-proof
+    - Player items will not be accidentally deleted
+- Hopper + Hopper Minecart protection
+- Simple callback features
+- Automatic item slot rejection based on dynamic criteria
+
+
+## How to use
+
+_For an example of proper usage, please refer the function folder `fancyui:demo/*`. Run the command `fancyui:demo/set_block` to place the demo block. The demo is a block that allows you to put **Mending II** on any unenchanted armor you give it. Don't ask why._
+
+To create a UI block, first create a marker entity with the tags **_fancyui_** and **_fancyui.container_**. Set its "*data*" NBT according to the following section, **Marker Definition**. Once the data has been set, run the function `fancyui:initialize_all` to set up the container.
+
+
+#### Marker Definition
+
+- All values are contained within the marker's "*data*" NBT
+
+- **container** (_string_)
+    - The block for the marker
+    - Ex: "minecraft:chest"
+
+- **on_break** (_string_)
+    - The function that is executed when the block is broken
+
+- **slots** (_compound list_)
+    - The definition for each slot that is relevant
+    - **Slot** (_int_)
+        - The byte value of the target slot
+    - **type** (_string_)
+        - The type of slot
+        - Cases
+            - "*background*"
+                - Sets the slot to a special item that can't be removed and hides the slot entirely
+            - "*item*"
+                - Sets the slot to the specified item
+                - The item data is contained within this compound. For example, the item's "*component*"
+                    NBT would be right next to this "*type*" value
+            - "*watch*"
+                - Watch if this empty slot changes
+                - You can specify item criteria to automatically reject it or a callback function when it is accepted
+    - **save_pos** (_bool_)
+        - Whether to save the coordinates of the container within the item at the path "_components.custom_data.fancyui.origin_"
+        - This is always done for the "_background_" type
+    
+    - Available NBT data when `{ type: "watch" }`
+        - **criteria** (_string_)
+            - Not required
+            - An item or item tag that this slot will accept
+            - It will automatically return a rejected item to the player
+            - This is the exact item predicate that is inserted within the command `execute if items entity @s weapon.mainhand ...`, so you can get crazy with it
+                - Ex: "`*[!enchantments]`" allows any item, but requires it to have no enchantments
+        
+        - Callback functions
+
+            - **callback** (_compound_)
+                - Not required
+                - **function** (_string_)
+                    - The function that is executed when an item is placed in this slot, if the item meets the criteria
+                - **data** (_string_)
+                    - Not required
+                    - NBT that is set at storage path "_fancyui:data callback_data_" before the callback is run
+            
+            - **removal_callback** (_compound_)
+                - Not required
+                - **function** (_string_)
+                    - The function that is executed if an accepted item is removed from this slot
+                - **data** (_string_)
+                    - Not required
+                    - NBT that is set at storage path "_fancyui:data callback_data_" before the callback is run
+            
+            - **_Important Notes_**
+            
+                - Set the score **_successful_call fancyui.master_** to 0 at the beginning of ALL your callback functions. Otherwise, an error message will appear claiming the callback function doesn't exist
+                
+                - If you manually modify a slot within the container that is a 'watch' slot, please follow a couple steps:
+                    - Set the score **_modified_slot fancyui.master_** to the slot you are changing
+                    - Call the function `fancyui:manual_placement` or `fancyui:manual_removal`
+                    - If you swap an item instead, just call the `fancyui:manual_placement`
+                    - An example of this is **Line 7** of function `fancyui:demo/removed_result`
+            
+            - General Information
+                - Callback functions may run the function **_fancyui:reject_item_** to reject the item manually
+                    - Don't call this function within your _removal_callback_ function!
+                - The scoreboard value **_swapped fancyui.master_** will be set to 1 if we have detected an item was swapped (Item in mouse cursor switched with item in container)
+                    - In the case of a swap, we will immediately run the _removal_callback_, then the _callback_ function
+                        - This means that the _removal_callback_ function being called doesn't guarantee that the slot will be empty!
+                    - If we can find the swapping player
+                        - They will be tagged with **_fancyui.watch.swapper_**
+                        - It's given that the item within the player's slot **_player.cursor_** was the original item
+
+
+#### Configuration Items
+- Score **_config.performance fancyui.master_**
+    - A flag for performance increases, at the cost of a slightly less responsive UI
+    - Set to 0 (false) by default
+    - Setting to 1 (true):
+        - Only updates UI containers within 10 blocks of a player
+        - May hinder or remove the hopper protection
+
+            
+
