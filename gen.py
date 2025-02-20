@@ -85,13 +85,14 @@ def fit_image(img: Image.Image):
     return img
 
 
-os.chdir("data/fancyui/function/ui/safety/fixed/saving/slot")
+os.chdir("data/fancyui/function/ui/init/slot/specific")
 
 replacements = {}
 for i in range(54):
     replacements["_INT_"] = str(i)
 
     replace_file("_INT_.mcfunction", replacements)
+    
 
 
 

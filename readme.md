@@ -63,6 +63,7 @@ All UI block data is stored in the marker's `"data"` NBT.
   - `"background"` – Uses a special item that **cannot be removed** and **hides the slot**.
   - `"item"` – Holds a specified item (NBT-stored item data).
   - `"watch"` – Detects item placement and can **automatically reject items** or **run a callback function**.
+  - `"button"` – Detects when clicked and **runs a callback function**.
 
 - **`save_pos`** (_bool_)
   - If `true`, saves the container’s position within the item NBT:
@@ -151,6 +152,32 @@ If you modify a watched slot programmatically:
    - `fancyui:manual_removal` (for removing items)
    - `fancyui:manual_placement` (for overwriting items)
 3. Example in `fancyui:demo/removed_result`, Line 7.
+
+---
+
+## **Button Slot Behavior**
+For slots with `{ type: "button" }`, additional NBT options are available.
+
+### **Callback Function (`callback`)**
+- **Optional:** Executes when the button is clicked.
+- Stores extra data in `_fancyui:data callback_data_` before execution.
+- The player that pressed the button is tagged with _`fancyui.watch.swapper`_
+  - The player's slot _`player.cursor`_ contains the button item
+  - Modifying this item will persist once returned to the container
+#### **Fields**
+
+- `function` (_string_)
+    - Function to execute when the button is clicked.
+
+- `data` (_string_)
+    - **Optional:** NBT data to place in storage _`fancyui:data callback_data`_ before the callback is run
+
+```json
+"callback": {
+  "function": "your_namespace:your_function",
+  "data": "{ custom_data: 123 }"
+}
+```
 
 ---
 

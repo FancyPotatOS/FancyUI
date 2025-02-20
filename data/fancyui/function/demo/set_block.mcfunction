@@ -62,9 +62,12 @@ data modify entity @n[type=marker] data set value \
             Slot:10b,                           \
             type:"background"                   \
         },                                      \
-        {                                       \
-            Slot:12b,                           \
-            type:"background"                   \
+        {\
+            Slot:12b,\
+            type:"button",\
+            callback: {\
+                function: "fancyui:demo/pressed_button"\
+            }\
         },                                      \
         {                                       \
             Slot:13b,                           \
