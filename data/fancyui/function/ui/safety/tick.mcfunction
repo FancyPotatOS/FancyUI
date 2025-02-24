@@ -7,7 +7,7 @@
 #
 
 
-execute as @a if items entity @s player.cursor poisonous_potato[custom_data~{fancyui:{fixed:true}}] at @s run function fancyui:ui/safety/fixed/cursor/on_detect
+execute as @a if items entity @s player.cursor #fancyui:ui_placeholders[custom_data~{fancyui:{fixed:true}}] at @s run function fancyui:ui/safety/fixed/cursor/on_detect
 
 execute as @e[type=marker,tag=fancyui.container] at @s run function fancyui:ui/safety/container_safety
 

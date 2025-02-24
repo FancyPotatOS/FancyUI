@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": "minecraft:poisonous_potato",
+            "items": "#fancyui:ui_placeholders",
             "predicates": {
               "minecraft:custom_data": "{fancyui:{fixed:true}}"
             }

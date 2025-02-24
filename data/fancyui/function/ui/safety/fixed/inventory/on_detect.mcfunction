@@ -15,5 +15,5 @@ function fancyui:ui/safety/fixed/inventory/replace_fixed
 
 tag @s remove fancyui.cursor.instigator
 
-clear @s poisonous_potato[custom_data~{fancyui:{fixed:true}}]
+clear @s #fancyui:ui_placeholders[custom_data~{fancyui:{fixed:true}}]
 

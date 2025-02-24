@@ -16,7 +16,8 @@ data merge storage fancyui:data {slot:\
         id:"minecraft:poisonous_potato",\
         components: {\
             "minecraft:tooltip_display": {hide_tooltip:true},\
-            "minecraft:max_stack_size":1,\
+            "minecraft:max_stack_size": 1,\
+            "minecraft:item_model": "fancyui:background",\
             "minecraft:custom_model_data": {strings:["background"]},\
             "minecraft:custom_data": {\
                 fancyui: {\

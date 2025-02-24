@@ -19,14 +19,15 @@ data merge storage fancyui:data {slot:\
         id:"minecraft:poisonous_potato",\
         components: {\
             "minecraft:tooltip_display": {hide_tooltip:true},\
-            "minecraft:max_stack_size":1,\
+            "minecraft:max_stack_size": 1,\
+            "minecraft:item_model": "fancyui:button",\
             "minecraft:custom_model_data": {strings:["button"],"flags":[ false ]},\
             "minecraft:custom_data": {\
                 fancyui: {\
-                    origin:[14,79,-6],\
-                    Slot:19,\
-                    fixed:true,\
-                    button:true\
+                    origin: [14,79,-6],\
+                    Slot: 19,\
+                    fixed: true,\
+                    button: true\
                 }\
             }\
         }\
