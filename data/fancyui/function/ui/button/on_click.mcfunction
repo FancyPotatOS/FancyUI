@@ -9,6 +9,8 @@
 
 # say button/on_click
 
+tag @s add fancyui.button.clicker
+
 summon armor_stand ~ ~ ~ {equipment:{},Tags:["fancyui.button.armor_stand"],Invisible:1b}
 
 item replace entity @n[tag=fancyui.button.armor_stand] weapon.mainhand from entity @s player.cursor
@@ -36,4 +38,5 @@ execute if data storage fancyui:data slot_item.callback as @n[tag=fancyui.button
 
 # Clean up
 tag @n[tag=fancyui.button.container] remove fancyui.button.container
+tag @s remove fancyui.button.clicker
 

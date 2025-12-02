@@ -21,14 +21,14 @@ This system is ideal for **custom crafting**, **interactive chests**, **trading 
 ## **How to Use**
 
 **Demo Usage:**
-For a working example, check the function folder at:
+For working examples, check the function folders under:
 *`fancyui:demo/*`*
 
 To place a demo UI block, run:
 ```mcfunction
-function fancyui:demo/set_block
+function fancyui:demo/mending_two/set_block
 ```
-The demo UI enchants any unenchanted armor with Mending II when placed inside. Don't ask why, but why not!
+This demo, "Mending Two", enchants any unenchanted armor with Mending II when placed inside. Don't ask why, but why not!
 
 ### **Creating a UI Block**
 1. Create a marker entity with the following tags:\
@@ -57,6 +57,11 @@ All UI block data is stored in the marker's `"data"` NBT.
 - **`slots`** (_compound list_)
   - Defines which slots are relevant and their behavior.
 
+### **Optional Fields**
+- **`container_data`** (_compound_)
+  - Block NBT data that will be merged in.
+  - Example: `{CustomName:"Container Name"}`
+
 #### **Slot Properties**
 - **`Slot`** (_int_) – The target slot’s byte value.
 - **`type`** (_string_) – Defines the slot's function:
@@ -67,7 +72,7 @@ All UI block data is stored in the marker's `"data"` NBT.
 
 - **`save_pos`** (_bool_)
   - If `true`, saves the container’s position within the item NBT:
-    `_components.custom_data.fancyui.origin_`
+    _`components.custom_data.fancyui.origin`_
   - This is always enabled for `"background"` type slots.
 
 ---
@@ -90,7 +95,7 @@ This allows **any item without enchantments**.
 
 ### **Callback Function (`callback`)**
 - **Optional:** Executes when a valid item is placed.
-- Stores extra data in `_fancyui:data callback_data_` before execution.
+- Stores extra data in _`fancyui:data callback_data`_ before execution.
 
 #### **Fields**
 
@@ -151,7 +156,7 @@ If you modify a watched slot programmatically:
    - `fancyui:manual_placement` (for adding items)
    - `fancyui:manual_removal` (for removing items)
    - `fancyui:manual_placement` (for overwriting items)
-3. Example in `fancyui:demo/removed_result`, Line 7.
+3. Example in `fancyui:demo/mending_two/removed_result`, Line 7.
 
 ---
 
@@ -160,8 +165,8 @@ For slots with `{ type: "button" }`, additional NBT options are available.
 
 ### **Callback Function (`callback`)**
 - **Optional:** Executes when the button is clicked.
-- Stores extra data in `_fancyui:data callback_data_` before execution.
-- The player that pressed the button is tagged with _`fancyui.watch.swapper`_
+- Stores extra data in _`fancyui:data callback_data`_ before execution.
+- The player that pressed the button is tagged with _`fancyui.button.clicker`_
   - The player's slot _`player.cursor`_ contains the button item
   - Modifying this item will persist once returned to the container
 #### **Fields**

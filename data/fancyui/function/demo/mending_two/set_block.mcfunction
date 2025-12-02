@@ -5,7 +5,7 @@ execute align xyz run summon marker ~0.5 ~0.5 ~0.5 {Tags:["fancyui", "fancyui.co
 data modify entity @n[type=marker] data set value \
 {                                               \
     container:"minecraft:chest",                \
-    on_break:"fancyui:demo/on_break",           \
+    on_break:"fancyui:demo/mending_two/on_break",           \
     slots: [                                    \
         {                                       \
             Slot:0b,                            \
@@ -52,10 +52,10 @@ data modify entity @n[type=marker] data set value \
             type:"watch",\
             criteria:"#minecraft:enchantable/equippable",\
             callback: {\
-                function: "fancyui:demo/placed_item"\
+                function: "fancyui:demo/mending_two/placed_item"\
             },\
             removal_callback: {\
-                function: "fancyui:demo/removed_item"\
+                function: "fancyui:demo/mending_two/removed_item"\
             }\
         },\
         {                                       \
@@ -66,7 +66,7 @@ data modify entity @n[type=marker] data set value \
             Slot:12b,\
             type:"button",\
             callback: {\
-                function: "fancyui:demo/pressed_button"\
+                function: "fancyui:demo/mending_two/pressed_button"\
             }\
         },                                      \
         {                                       \
@@ -81,7 +81,7 @@ data modify entity @n[type=marker] data set value \
             Slot:15b,\
             type:"watch",\
             removal_callback: {\
-                function: "fancyui:demo/removed_result"\
+                function: "fancyui:demo/mending_two/removed_result"\
             }\
         },\
         {                                       \

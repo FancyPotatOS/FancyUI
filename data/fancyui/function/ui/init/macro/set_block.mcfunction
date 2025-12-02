@@ -7,5 +7,5 @@
 #
 
 
-$setblock ~ ~ ~ $(block)
+$setblock ~ ~ ~ $(block)$(block_data)
 

@@ -6,7 +6,6 @@
 #   Input: None
 #
 
-
 # say button/callback
 
 # Clean old callback data
