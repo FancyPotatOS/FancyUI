@@ -4,7 +4,10 @@
             "path": "."
         },
         {
-            "path": "../../../../resourcepacks/FancyUIResourcePack - 1.21.11"
+            "path": "../../../../resourcepacks/FancyUIResourcePack - 26.1.2"
+        },
+        {
+            "path": "../../../../resourcepacks/FancyUIResourcePackDarkMode - 26.1.2"
         }
     ],
     "settings": {

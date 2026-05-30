@@ -1,0 +1,12 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "minecraft:item/generated",
+	"textures": {
+		"layer0": "fancyui:item/background"
+	},
+	"display": {
+		"gui": {
+			"scale": [1.125, 1.125, 1]
+		}
+	}
+}

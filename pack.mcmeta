@@ -1,8 +1,8 @@
 {
   "pack": {
-    "pack_format": 94,
-    "max_format": 94,
-    "min_format": 94,
-    "description": "FancyPotatOS' FancyUI Datapack"
+    "description": "FancyPotatOS' FancyUI Datapack",
+    "min_format": [ 101, 1 ],
+    "max_format": 101,
+    "pack_format": 101
   }
 }
